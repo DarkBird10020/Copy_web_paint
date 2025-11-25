@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benchmark Lab - Web Paint Performance</title>
+    <link rel="stylesheet" href="css/benchmark.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="lab-container">
+        <!-- Sidebar Controls -->
+        <aside class="controls">
+            <header>
+                <h2>🧪 Benchmark Lab</h2>
+                <p>Stress test your browser's rendering engine.</p>
+            </header>
+
+            <div class="control-group">
+                <label>Test Scenario</label>
+                <select id="scenarioSelect">
+                    <option value="opacity">Baseline: Opacity (Fast)</option>
+                    <option value="shadows">Stress: Box Shadows (Heavy Paint)</option>
+                    <option value="filters">Stress: CSS Filters (Heavy GPU)</option>
+                    <option value="layout">Stress: Layout Thrashing (Top/Left)</option>
+                    <option value="transform">Optimized: Transforms (Composite)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>Element Count</label>
+                <input type="range" id="elementCount" min="100" max="5000" step="100" value="1000">
+                <span id="countValue">1000 elements</span>
+            </div>
+
+            <div class="actions">
+                <button id="startBtn" class="btn-primary">Run Benchmark</button>
+                <button id="stopBtn" class="btn-danger" disabled>Stop</button>
+            </div>
+
+            <div class="device-info">
+                <h3>Device Fingerprint</h3>
+                <ul>
+                    <li>Cores: <span id="cpuCores">--</span></li>
+                    <li>Memory: <span id="ram">--</span> GB</li>
+                    <li>User Agent: <span id="browser">--</span></li>
+                </ul>
+            </div>
+
+            <div class="navigation-link">
+                <a href="index.html">← Back to Lighthouse Auditor</a>
+            </div>
+        </aside>
+
+        <!-- Main Visualization Area -->
+        <main class="stage-area">
+
+            <!-- Real-time Stats Overlay -->
+            <div class="stats-panel">
+                <div class="stat-box">
+                    <span class="label">FPS</span>
+                    <span class="value" id="fpsCounter">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">Score</span>
+                    <span class="value" id="scoreDisplay">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">Frames</span>
+                    <span class="value" id="frameTotal">0</span>
+                </div>
+            </div>
+
+            <!-- The Chart -->
+            <div class="chart-container">
+                <canvas id="perfChart"></canvas>
+            </div>
+
+            <!-- The "Paint Area" where DOM elements are injected -->
+            <div id="renderStage" class="render-stage"></div>
+
+        </main>
+    </div>
+
+    <script src="js/benchmark.js"></script>
+</body>
+
+</html>

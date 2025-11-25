@@ -1,0 +1,234 @@
+:root {
+    --bg-dark: #1e1e2e;
+    --panel-bg: #252538;
+    --accent: #7c4dff;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --danger: #ff5252;
+    --success: #69f0ae;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow: hidden;
+}
+
+.lab-container {
+    display: flex;
+    height: 100vh;
+}
+
+.controls {
+    width: 300px;
+    background: var(--panel-bg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-right: 1px solid #333;
+    z-index: 10;
+}
+
+.controls h2 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.controls p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+select,
+input[type="range"] {
+    width: 100%;
+    padding: 8px;
+    background: #333;
+    border: none;
+    color: white;
+    border-radius: 4px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: white;
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.btn-danger.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.device-info {
+    margin-top: auto;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.device-info ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.navigation-link a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.navigation-link a:hover {
+    color: white;
+}
+
+.stage-area {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-panel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 20px;
+    z-index: 20;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.stat-box .label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.stat-box .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.chart-container {
+    height: 200px;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.render-stage {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #111;
+}
+
+.particle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 4px;
+    will-change: transform;
+}
+
+.scenario-opacity {
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        opacity: 0.1;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.scenario-shadows {
+    background: #fff;
+    box-shadow:
+        0 0 10px var(--accent),
+        0 0 20px var(--accent),
+        0 0 40px var(--accent);
+    animation: rotate 2s linear infinite;
+}
+
+.scenario-filters {
+    background: linear-gradient(45deg, red, blue);
+    filter: blur(4px) hue-rotate(90deg);
+}
+
+.scenario-layout {
+    transition: none;
+}
+
+.scenario-transform {
+    transform: translate3d(0, 0, 0);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
