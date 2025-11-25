@@ -11,24 +11,29 @@
 
 <body>
 
+    <div class="background-gradient"></div>
+
     <div class="container">
-        <header class="app-header">
-            <h1>Web Paint Benchmark <span class="tag">AUDIT</span></h1>
-            <p class="subtitle">Enter a URL to generate a Lighthouse-style performance report.</p>
+        <header class="app-header glass">
+            <div>
+                <p class="eyebrow">Google PageSpeed powered</p>
+                <h1>Web Paint Benchmark <span class="tag">AUDIT</span></h1>
+                <p class="subtitle">Generate a Lighthouse-style performance report for any URL.</p>
+            </div>
 
             <div class="search-box">
                 <input type="url" id="urlInput" placeholder="https://example.com" value="https://google.com">
-                <button id="runBtn" onclick="runAudit()">Run Audit</button>
+                <button id="runBtn" class="primary" onclick="runAudit()">Run Audit</button>
             </div>
             <div id="statusMessage" class="status"></div>
         </header>
 
-        <div id="loader" class="loader hidden">
+        <div id="loader" class="loader glass hidden">
             <div class="spinner"></div>
             <p>Analyzing page via PageSpeed Insights...</p>
         </div>
 
-        <main id="dashboard" class="dashboard hidden">
+        <main id="dashboard" class="dashboard glass hidden">
 
             <div class="score-section">
                 <div class="gauge-wrapper">
@@ -40,8 +45,10 @@
                         <text x="18" y="20.35" class="percentage">0</text>
                     </svg>
                 </div>
-                <h2>Performance Score</h2>
-                <p class="device-info">Values estimated for a mobile device.</p>
+                <div class="score-copy">
+                    <h2>Performance Score</h2>
+                    <p class="device-info">Calibrated for a mid-tier mobile device.</p>
+                </div>
             </div>
 
             <div class="metrics-grid">
@@ -76,7 +83,13 @@
             </div>
 
             <div class="diagnostics">
-                <h3>Top Opportunities</h3>
+                <div class="diag-header">
+                    <div>
+                        <p class="eyebrow">Quick wins</p>
+                        <h3>Top Opportunities</h3>
+                    </div>
+                    <p class="hint">Focus here first to boost your score.</p>
+                </div>
                 <ul id="opportunityList">
                 </ul>
             </div>
